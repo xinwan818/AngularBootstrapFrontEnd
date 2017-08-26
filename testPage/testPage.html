@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!--  #######################################
+	  #					#
+          #  Programmer : Wenting Zhang         #
+          #  Email: zwt467875460@gmail.com      #
+          #  Tel: (780)9034303                  #
+	  #  Date: 2017-08-25    		#              
+	  #					#
+	  #					#
+          #######################################  -->
+
+
+</head>
+
+<body ng-app="myApp">
+
+    <!-- ****************************** nav bar ********************************************** -->
+<nav class="navbar navbar-default  navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">LOGO</a>
+    </div>
+	<ul class="nav navbar-nav navbar-left">
+	    <p class="navbar-text navbar-left" ><strong>VenturX: Prototype</strong></p>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span>  Hello!</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>   Log Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+    <!-- ********************************  Profile Form   ************************************* -->
+    <div class="container">
+        <div class="row" id="pic+3Q" >
+        <div class="col-lg-2" id = "pic"><img src="PHOTO.JPG" class="img-rounded"> </div>
+        <div id="3Q">
+        <form class="form-horizontal" role="form">
+	<div class="col-md-9">
+	<div class="form-group">
+		<label for="market" class="col-sm-3 control-label">Market</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" id="market" 
+				   placeholder="Fill in who are your customers?">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="pain" class="col-sm-3 control-label">Pain</label>
+		<div class="col-sm-7">
+			<input type="text" class="form-control" id="pain" 
+				   placeholder="What is the pain statement that you are trying to solve for them?">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="lastname" class="col-sm-3 control-label">Benefit</label>
+		<div class="col-sm-7">
+			<input type="benefit" class="form-control" id="benefit" 
+		    	placeholder="What is the benefit that will match that pain statement?">
+		</div>
+	</div>
+	</div>
+	<div class="col-md-1 col-md-pull-1" >
+	<div class="form-group">
+		<div class="col-md-4 " >
+			<button type="submit" class="btn btn-default btn-lg" >Edit Profile</button>
+		</div>
+	</div>
+        </div>	
+ 	</form>
+        </div>
+        </div>
+
+
+
+
+
+	<!--  ****************************************** gauges ************************************     -->
+	<div  ng-controller="nameCtrl" style="text-align:center">
+	<h3>How is {{name}}
+	<span ng-click="toggle()" class="glyphicon glyphicon-pencil" style="color: rgb(0, 0, 250)"> </span>doing today?
+	<p ng-show = "myVar" style="text-align:center"> <input type=text ng-model="name"></p> 
+	
+	<small>  Check dashboard</small></h3></div>
+	<br>
+	<div class="row">
+	<div class="col-lg-3"><ng-gauge type="full" value="27" thick="5" size="140"
+          label="Product" append="%"  foreground-color="#EE9A49"
+          background-color="#ecf0f1"></ng-gauge> </div>
+
+	<div class="col-lg-3"><ng-gauge type="full" value="3" thick="5" size="140"
+          label="Runway" append="months" foreground-color="#EE0000"
+          background-color="#ecf0f1"></ng-gauge></div>
+
+	<div class="col-lg-3"><ng-gauge type="full" value="24" thick="5" size="140"
+          label="Conversation" append="%" foreground-color="#EE9A49"
+          background-color="#ecf0f1"></ng-gauge> </div>
+
+	<div class="col-lg-3"><ng-gauge type="full" value="100" thick="5" size="140"
+          label="Engagement" append="%" foreground-color="#9AFF9A"
+          background-color="#ecf0f1"></ng-gauge> </div>
+	</div>
+
+	<br>
+	<br>
+
+
+	<!-- ****************************************  Question wells *********************************    -->
+	<div class="well" style="background-color: #FFE7BA; padding:3px 20px" >
+	
+	<h5><strong> Small conversion? </strong>Learn what you can do to <a href="#" style = "color:#000000;font-weight:bold">rise your conversion.</a></h5>
+	</div>
+
+	<div class="well" style="background-color: #FFC1C1;padding:3px 20px">
+	<h5><strong style="color:#B22222">Low product score?  <a href="#" style = "color:#000000">  Try this</a></strong> to get more...</h5>
+	</div>
+	</div>
+    </div>
+         
+
+</body>
+
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angularjs-gauge/dist/angularjs-gauge.min.js"></script>
+
+<script>
+
+var app = angular.module('myApp', ['angularjs-gauge']);
+
+app.controller('nameCtrl',function($scope){
+    $scope.name="VenturX";
+    $scope.myVar = false;
+    $scope.toggle = function(){
+	$scope.myVar = !$scope.myVar;
+
+}
+
+
+})
+</script>
+
+</html>
